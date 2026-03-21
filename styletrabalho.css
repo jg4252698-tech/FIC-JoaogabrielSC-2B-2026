@@ -1,1 +1,19 @@
-h1 {color: red;}
+header{
+    background-color: black;
+    color: white
+}
+nav ul li{
+    display: inline-block;
+    margin: 20px;
+}
+body{
+    background-color: blanchedalmond;
+}
+#titulo{
+    text-align: center; 
+    font-size: 35px;
+}
+#subtitulo{
+    color: red;
+    text-align: center;
+}
