@@ -86,4 +86,7 @@ button:hover:before, button:focus:before {
 button:active {
   transform: scale(0.9);
 }
-
+h2{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
