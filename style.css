@@ -17,7 +17,8 @@ header {
     color: rgb(98, 0, 255);
     display: inline-block;
     transition: 0.3s;
-    transform: scale(1.2);;
+    transform: scale(1.2);
+    ;
 }
 
 body {
@@ -45,6 +46,21 @@ li a:hover {
     color: rgb(98, 0, 255);
     transform: scale(1.2);
 }
+.container{
+    display:flex;
+    margin: 10;
+}
+.paraografo {
+    display:flex;
+}
+
+#textoini {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    margin-left: 299px;
+}
 .digitando {
     font-family: 'Open Sans', sans-serif;
     font-size: 30px;
@@ -55,20 +71,24 @@ li a:hover {
     white-space: nowrap;
     border-right: 3px solid white;
 
-    animation: 
+    animation:
         loop 9s steps(19, end) infinite,
         piscar 0.5s steps(1) infinite;
 }
+
 @keyframes loop {
     0% {
         width: 0;
     }
+
     30% {
         width: 19ch;
     }
+
     60% {
         width: 19ch;
     }
+
     100% {
         width: 0;
     }
