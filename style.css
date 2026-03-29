@@ -1,101 +1,86 @@
+body {
+    background-color: #4f4f51;
+}
+
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-}
-
-#titulop a {
     font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
-    font-weight: 300;
-    text-decoration: none;
-    color: white;
-    margin-left: 299px;
+    background-color: black;
+    padding: 0.5rem;
 }
-
-#titulop a:hover {
-    color: rgb(98, 0, 255);
-    display: inline-block;
-    transition: 0.3s;
-    transform: scale(1.2);
-    ;
-}
-
-body {
-    background-color: #000020;
-}
-
-nav ul {
+ul {
     display: flex;
-    gap: 20px;
-    text-align: right;
-    margin: 5px;
+    gap: 5rem;
+    list-style-type: none;
 }
 
-li a {
+a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300px;
     text-decoration: none;
-    display: inline-block;
-    font-size: medium;
     color: white;
-    transition: 0.3s;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 5px;
+    margin-left: 2rem;
 }
 
-li a:hover {
-    color: rgb(98, 0, 255);
+a:hover {
+    color: rgb(67, 64, 73);
+    display: inline-block;
+    transition: 0.3s;
     transform: scale(1.2);
 }
-.container{
-    display:flex;
-    margin: 10;
-}
-.paraografo {
-    display:flex;
-}
 
-#textoini {
+.bemvindo{
+    display:flex;
+    margin: 3rem 0rem 0rem 35rem;
+    font-size: 1rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.5rem;
     font-weight: 300;
     color: white;
-    margin-left: 299px;
 }
-.digitando {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 30px;
-    font-weight: 300;
-    color: white;
 
+#digitando {
     overflow: hidden;
     white-space: nowrap;
-    border-right: 3px solid white;
+    border-right: 9px solid rgb(255, 255, 255);
 
     animation:
-        loop 9s steps(19, end) infinite,
-        piscar 0.5s steps(1) infinite;
+        loop 9s steps(19, end) 1;
+        piscar 0.6s steps(1) infinite;
 }
-
 @keyframes loop {
     0% {
         width: 0;
     }
-
     30% {
         width: 19ch;
     }
-
     60% {
         width: 19ch;
     }
-
     100% {
         width: 0;
     }
 }
-
 @keyframes piscar {
-    50% {
+    97% {
         border-color: transparent;
     }
+}
+
+.paragrafo {
+    display:flex;
+    margin-top: 4rem;
+    align-items: flex-start;
+    text-align: justify;
+    gap: 20px;
+    font-size: 0.7rem;
+    color: white;
+}
+
+#textoini {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6
 }
