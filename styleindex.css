@@ -2,23 +2,24 @@ body {
     background-color: #676767;
 }
 
-
 #ulcabeca {
     display: flex;
-    gap: 5rem;
+    align-items: center;
+    text-align: center;;
     list-style-type: none;
+    padding: 1.5rem;
+    justify-content: center;
 }
 
-a {
+#ulcabeca a {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 300px;
+    font-size: 1.4rem;
     text-decoration: none;
     color: white;
-    margin-left: 2rem;
+    margin: 0 4rem;
 }
 
-li a:hover {
+#ulcabeca li a:hover {
     color: rgb(67, 64, 73);
     display: inline-block;
     transition: 0.3s;
@@ -28,10 +29,10 @@ li a:hover {
 .bemvindo{
     display:flex;
     margin-top: 3rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     justify-content: center;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 300px;
     color: white;
 }
 
@@ -39,10 +40,9 @@ li a:hover {
     overflow: hidden;
     white-space: nowrap;
     border-right: 9px solid rgb(255, 255, 255);
-
     animation:
-        loop 9s steps(19, end) 1;
-        piscar 0.6s steps(1) infinite;
+        loop 9s steps(19, end) 1 forwards;
+        piscar 0,3s steps(1) infinite;
 }
 @keyframes loop {
     0% {
@@ -51,27 +51,33 @@ li a:hover {
     30% {
         width: 19ch;
     }
+    50% {
+        width: 19ch;
+    }
     60% {
+        width: 0ch;
+    }
+    70% {
         width: 19ch;
     }
     100% {
-        width: 0;
+        width: 19;
     }
 }
 @keyframes piscar {
-    97% {
+    60% {
         border-color: transparent;
     }
 }
 
 .conteudo {
-    margin: 0 auto;
+    margin: 0 2rem;
     max-width: 1000px;
     display:flex;
     flex-direction: column;
-    gap: 10rem;
-    font-size: 1.1rem;
-    animation: entrartexto 2s ease-out forwards; 
+    gap: 5rem;
+    font-size: 1.2rem;
+    animation: entrartexto 1s ease forwards; 
 }
 @keyframes entrartexto {
     0% {
@@ -96,20 +102,17 @@ li a:hover {
 .textosec {
     display: flex;
     gap: 2rem;
-    align-items: center;
     justify-content: space-between;
     max-width: 900px;
 }
 
 .foto {
+    display: flex;
     width: 350px;
     height: 350px;
     border-radius: 50%;
+    align-items: right;
     animation: entrarfoto 3s linear forwards;
-    transition: 0.3s;
-}
-.foto:hover {
-    transform: scale(1.1);
 }
 @keyframes entrarfoto {
     0% {
@@ -137,7 +140,7 @@ li a:hover {
 
 @keyframes infos {
     0% {
-        transform: translateY(100vh);
+        transform: translateY(10vh);
         opacity: 0;
     }
     
