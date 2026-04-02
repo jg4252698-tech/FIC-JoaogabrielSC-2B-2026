@@ -41,7 +41,7 @@ body {
     white-space: nowrap;
     border-right: 9px solid rgb(255, 255, 255);
     animation:
-        loop 9s steps(19, end) 1 forwards;
+        loop 9s steps(19, end) 1 forwards,
         piscar 0,3s steps(1) infinite;
 }
 @keyframes loop {
