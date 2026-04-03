@@ -1,53 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta name="view-transition" content="same-origin" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styleindex.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfólio | Home</title>
 </head>
-
 <body>
-    <div class="cabeca">
-        <header>
-            <nav>
-                <ul id="ulcabeca">
-                    <li><a href="#inicio.html">Inicio</a></li>
-                    <li><a href="#sobre.html">Sobre</a></li>
-                    <li><a href="#tabelas.html">Tabelas</a></li>
-                    <li><a href="contato.html">Contatos</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
 
-    <div class="bemvindo">
-        <h1 id="digitando">Seja muito bem-vindo(a)</h1>
-    </div>
-    <div class="conteudo">
-        <h2 id="textoini">Este é o meu site pessoal, onde compartilho informações e projetos.   Aqui você encontrará informações sobre minha jornada, meus interesses e as coisas que me inspiram.  Sinta-se à vontade para explorar e conhecer mais sobre mim!</h2>
-        <div class="textosec">
-            <h3 id="infos">Este sou eu, João Gabriel Silva de Castro, tenho 16 anos e estudo na Escola Estadual Professor Francisco Ivo Cavalcanti.<a id="linkivo" href="https://www.instagram.com/eefivo/">(Instragram)</a> Estou no momento fazendo o Ensino Médio com curso de informática integrada</h3>    
-            <img src="imagens/ll.jpeg" class="foto" width="500px" height="500px">
+    <nav class="navegacao">
+        <ul class="menu">
+                <li><a href="index.html" target="_blank" class="menu-link">Home</a></li>
+                <li><a href="projetos.html" target="_blank" class="menu-link">Projetos</a></li>
+                <li><a href="sobre.html" target="_blank" class="menu-link">Sobre</a></li>
+                <li><a href="contato.html" target="_blank" class="menu-link">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="cabecalho">
+        <img src="./imagens/foto-perfil.jpeg" alt="foto de perfil" class="Fotoperfil">
+        <h1>João Gabriel</h1>
+         <p class="subtitulo-cabecalho">Estudande júnior de programação e Front End</p>
+    </main>
+
+    <section class="principal">
+        <h2 class="titulo-principal">Sobre mim</h2>
+        <div class="caixa-principal">
+            <p class="texto-principal">Olá! Meu nome é João Gabriel, e no momento estou cursando no ramo da Informática, com relação ao Ensino Médio Integrado na Escola Francisco Ivo Cavalcanti, até o momento, estou na 2º série.</p>
         </div>
-    </div>
+    </section>
+
+
 </body>
-<footer>
-    <div class="sobregeral">
-        <h3>Sobre</h3>
-        <div class="footercontato">
-            <h3>Contato</h3>
-            <p>Email: jg4252698@gmail.com</p>
-            <p>Instagram: @gabriel1_72</p>
-        </div>
-        <div class="footersimbolo">
-            <p>© 2026 João Gabriel. Todos os direitos reservados.</p>
-        </div>
-    </div>
-</footer>
+</html>
