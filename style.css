@@ -35,7 +35,7 @@ body {
     padding: 1.5rem;
 }
 
-.menu{
+.menu {
     display: flex;
     list-style: none;
     gap: 3rem;
@@ -82,9 +82,25 @@ body {
 .Fotoperfil {
     width: 350px;
     height: 350px;
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
     border-radius: 50%;
     border: 4px solid var(--vidro);
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.25);
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.25);
+    }
+    50% {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 25px 45px rgba(79, 70, 229, 0.35);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.25);
+    }
 }
 
 h1 {
@@ -94,23 +110,18 @@ h1 {
     margin: 20px;
 }
 
-.subtitulo {
-    font-size: 1.5rem;
-    color: var(--claro);
-}
-
-.principal-index{
+.principal-index {
     padding: 6rem 2rem;
 }
 
-.titulo-index{
+.titulo-index {
     font-size: 3rem;
     color: var(--claro);
     text-align: center;
     margin-bottom: 20px;
 }
 
-.caixa-index{
+.caixa-index {
     padding: 2rem;
     max-width: 600px;
     margin: 0 auto;
@@ -120,7 +131,7 @@ h1 {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.texto-index{
+.texto-index {
     text-align: center;
     font-size: 1.3rem;
 }
@@ -128,14 +139,14 @@ h1 {
 
 /* PROJETOS DO HTML */
 
-.cabecalho{
+.cabecalho {
     margin-top: 6rem;
     min-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
+
 }
 
 .subtitulo {
@@ -149,13 +160,14 @@ h1 {
     border-radius: 20px;
     border: 1px solid var(--vidro);
     padding: 1rem;
+
 }
 
-.principal-projeto{
+.principal-projeto {
     margin-top: 8rem;
 }
 
-.titulo-projeto{
+.titulo-projeto {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 50px;
@@ -184,29 +196,29 @@ h1 {
     cursor: pointer;
 }
 
-.imagem-projeto{
+.imagem-projeto {
     height: 200px;
     width: 100%;
     object-fit: cover;
 }
 
-.caixa-cartao-projeto{
+.caixa-cartao-projeto {
     padding: 1.5rem;
 }
 
-.info-projeto{
+.info-projeto {
     color: rgba(226, 232, 240, 0.9);
     line-height: 1.25rem;
 
 }
 
-.texto-projeto{
+.texto-projeto {
     margin-top: 10px;
 }
 
 /* CONTATOS DO HTML */
 
-.contato{
+.contato {
     margin-top: 8rem;
 }
 
@@ -218,7 +230,7 @@ h1 {
 
 .contato-caixa {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 2rem;
     margin: 0 auto;
     text-align: center;
@@ -263,21 +275,85 @@ h1 {
 
 /* SOBRE DO HTML */
 
-
-
 .caixa-principal-sobre {
-    margin-top: 6rem;
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .foto-perfil-sobre {
+
+    margin-top: 2rem;
     height: 350px;
     box-shadow: 0 0 20px rgba(193, 192, 213, 0.3);
     border-radius: 50%;
     border: 4px solid var(--vidro);
+    display: flex;
 }
 
 .titulo-sobre {
     font-size: 2rem;
-    align-items: right;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
+    margin-top: 3rem;
+}
+
+.texto-sobre {
+    font-size: 1.5rem;
+    color: var(--claro);
+    justify-content: center;
+    max-width: 600px;
+    margin-top: 5rem;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid var(--vidro);
+    padding: 1rem;
+}
+
+.curiosidades-sobre {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitulo-sobre {
+    font-size: 1.5rem;
+    color: var(--claro);
+    text-align: center;
+    max-width: 600px;
+    margin-top: 20px;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid var(--vidro);
+    padding: 1rem;
+}
+
+.lista-sobre {
+    margin-top: 2rem;
+    color: var(--claro);
+    line-height: 1.5rem;
+    display: grid;
+    list-style: inside;
+    font-size: 1.4rem;
+    gap: 1rem;
+}
+
+.titulo-rodape {
+    font-size: 1.5rem;
+    color: var(--primaria);
+    font-weight: bold;
+}
+.rodape{
+    margin-top: 8rem;
+    display: grid;
+    gap: 5px;
+    padding: 2rem;
+    text-align: center;
+    background: var(--maisescuro);
 }
