@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contador de Cliques</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body class="body-contador">
+
+  <nav class="navegacao">
+    <ul class="menu">
+      <li><a href="index.html" target="_blank" class="menu-link">Home</a></li>
+      <li><a href="projetos.html" target="_blank" class="menu-link">Projetos</a></li>
+      <li><a href="sobre.html" target="_blank" class="menu-link">Sobre</a></li>
+      <li><a href="contato.html" target="_blank" class="menu-link">Contato</a></li>
+    </ul>
+  </nav>
+
+
+<div class="card">
+  <h1>Contador de Cliques</h1>
+  <p class="subtitle">Acompanhe seus cliques em tempo real</p>
+
+  <div class="counter-display zero" id="counter">0</div>
+  <p class="record">Recorde: <span id="record">0</span></p>
+
+  <div class="step-control">
+    <label for="step">Passo:</label>
+    <input type="number" id="step" value="1" min="1" max="100" />
+  </div>
+
+  <div class="buttons">
+    <button class="btn-decrement" onclick="change(-1)">−</button>
+    <button class="btn-increment" onclick="change(1)">+</button>
+  </div>
+
+  <button class="btn-reset" onclick="reset()">🔄 Resetar</button>
+
+  <div class="history" id="history"></div>
+</div>
+
+<script>
+  let count = 0;
+  let record = 0;
+
+  const counterEl = document.getElementById('counter');
+  const recordEl  = document.getElementById('record');
+  const historyEl = document.getElementById('history');
+
+  function getStep() {
+    return parseInt(document.getElementById('step').value) || 1;
+  }
+
+  function updateColor() {
+    counterEl.classList.remove('positive','negative','zero');
+    if (count > 0) counterEl.classList.add('positive');
+    else if (count < 0) counterEl.classList.add('negative');
+    else counterEl.classList.add('zero');
+  }
+
+  function bump() {
+    counterEl.classList.add('bump');
+    setTimeout(() => counterEl.classList.remove('bump'), 120);
+  }
+
+  function addHistory(op, value, result) {
+    const div = document.createElement('div');
+    div.className = 'history-item';
+    const time = new Date().toLocaleTimeString('pt-BR');
+    const opClass = op === '+' ? 'op-plus' : op === '-' ? 'op-minus' : 'op-reset';
+    div.innerHTML = `<span class="${opClass}">${op} ${value}</span><span>→ ${result} &nbsp; <small>${time}</small></span>`;
+    historyEl.prepend(div);
+  }
+
+  function change(direction) {
+    const step = getStep();
+    count += direction * step;
+    if (count > record) { record = count; recordEl.textContent = record; }
+    counterEl.textContent = count;
+    updateColor();
+    bump();
+    addHistory(direction > 0 ? '+' : '-', step, count);
+  }
+
+  function reset() {
+    addHistory('↺', count, 0);
+    count = 0;
+    counterEl.textContent = 0;
+    updateColor();
+    bump();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp'   || e.key === '+') change(1);
+    if (e.key === 'ArrowDown' || e.key === '-') change(-1);
+    if (e.key === 'r' || e.key === 'R') reset();
+  });
+</script>
+
+    <footer class="rodape">
+        <h4 class="titulo-rodape">Sobre</h4>
+        <p>João Gabriel • Desenvolvedor em formação</p>
+        <p>© 2026 João Gabriel. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
