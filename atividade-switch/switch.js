@@ -7,4 +7,4 @@ function menumatricula() {
         case "1":
 
             document.getElementById("resultadoopcoes").innerHTML = "Opção 1: Matricular-se em um curso";
-}
+}}
