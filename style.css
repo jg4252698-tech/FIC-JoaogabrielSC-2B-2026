@@ -13,25 +13,26 @@ html {
 }
 
 :root {
-    --primaria: #4f46e5;
-    --secundaria: #7c3aed;
+    --primaria: #01002b;
+    --secundaria: #260067;
     --escuro: #0f172a;
-    --maisescuro: #0a0f1c;
-    --claro: #e2e8f0;
-    --vidro: rgba(255, 255, 255, 0.1);
+    --maisescuro: #01011d;
+    --claro: #ffffff;
+    --vidro: rgba(62, 62, 62, 0.182);
+    --texto: #e2e8f0;
 }
 
 body {
-    background-color: var(--escuro);
+    background-color: var(--primaria);
     color: var(--claro);
 }
 
 .navegacao {
     position: fixed;
     top: 0;
-    background: rgba(15, 23, 42, 0.8);
+    background: var(--vidro);
     width: 100%;
-    z-index: 100;
+    z-index: 1ṕ00;
     padding: 1.5rem;
 }
 
@@ -107,7 +108,7 @@ body {
 
 h1 {
     font-size: 3.5rem;
-    color: var(--primaria);
+    color: var(--texto);
     font-weight: bold;
     margin: 20px;
 }
@@ -159,7 +160,7 @@ h1 {
     max-width: 600px;
     margin-top: 20px;
     backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(74, 74, 74, 0.235);
     border-radius: 20px;
     border: 1px solid var(--vidro);
     padding: 1rem;
@@ -240,31 +241,22 @@ h1 {
 .contato-caixa {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin: 0 auto;
-    text-align: center;
-    align-items: center;
 }
 
 .contato-item {
     display: flex;
     align-items: center;
-    gap: 20px;
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    border: 1px solid var(--vidro);
-    max-width: 1000px;
-    margin-top: 50px;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .contato-imagem {
-    height: 125px;
+    height: 150px;
     box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
-    border-radius: 50%;
+    border-radius: 10px;
     border: 4px solid var(--vidro);
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
     border: 1px solid var(--vidro);
     object-fit: cover;
 }
@@ -354,7 +346,7 @@ h1 {
 
 .titulo-rodape {
     font-size: 1.5rem;
-    color: var(--primaria);
+    color: var(--claro);
     font-weight: bold;
 }
 
@@ -590,7 +582,7 @@ button:active {
 .body-relogio {
     margin-top: 8rem;
     font-family: var(--claro);
-    background: var(--escuro);
+    background: var(--primaria);
     color: var(--text);
     min-height: 100vh;
     display: flex;
