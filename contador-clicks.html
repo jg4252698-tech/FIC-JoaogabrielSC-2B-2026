@@ -11,17 +11,6 @@
 
 <body class="body-contador">
 
-  <nav class="navegacao">
-    <ul class="menu">
-      <li><a href="index.html" target="_blank" class="menu-link">Home</a></li>
-      <li><a href="projetos.html" target="_blank" class="menu-link">Projetos</a></li>
-      <li><a href="sobre.html" target="_blank" class="menu-link">Sobre</a></li>
-      <li><a href="contato.html" target="_blank" class="menu-link">Contato</a></li>
-      <li><a href="java.html" class="menu-link">JavaScript</a></li>
-    </ul>
-  </nav>
-
-
   <div class="card">
     <h1>Contador de Cliques</h1>
     <p class="subtitle">Acompanhe seus cliques em tempo real</p>
@@ -35,11 +24,11 @@
     </div>
 
     <div class="buttons">
-      <button class="btn-decrement" onclick="change(-1)">−</button>
-      <button class="btn-increment" onclick="change(1)">+</button>
+      <button class="btn-decrement button-contador" onclick="change(-1)">−</button>
+      <button class="btn-increment button-contador" onclick="change(1)">+</button>
     </div>
 
-    <button class="btn-reset" onclick="reset()">🔄 Resetar</button>
+    <button class="btn-reset button-contador" onclick="reset()">🔄 Resetar</button>
 
     <div class="history" id="history"></div>
   </div>

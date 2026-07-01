@@ -146,7 +146,7 @@ function confirmar() {
     if (voto !== "80") {
       alert("Número inválido! Digite 80 para o candidato correto.");
       document.getElementById("voto").value = "";
-      return; // sai pra evitar loop infinito travando a UI
+      return;
     }
   }
 
@@ -189,58 +189,138 @@ function verificarNota() {
 
 //   RElOGIO DIGITAL
 
-  let count = 0;
-    let record = 0;
+    const zones = [
+      { name: "Brasil",        city: "Brasília",          tz: "America/Sao_Paulo" },
+      { name: "EUA (NY)",      city: "Nova York",          tz: "America/New_York" },
+      { name: "EUA (LA)",      city: "Los Angeles",        tz: "America/Los_Angeles" },
+      { name: "Portugal",      city: "Lisboa",             tz: "Europe/Lisbon" },
+      { name: "Reino Unido",   city: "Londres",            tz: "Europe/London" },
+      { name: "França",        city: "Paris",              tz: "Europe/Paris" },
+      { name: "Alemanha",      city: "Berlim",             tz: "Europe/Berlin" },
+      { name: "Japão",         city: "Tóquio",             tz: "Asia/Tokyo" },
+      { name: "China",         city: "Pequim",             tz: "Asia/Shanghai" },
+      { name: "Índia",         city: "Nova Délhi",         tz: "Asia/Kolkata" },
+      { name: "Austrália",     city: "Sydney",             tz: "Australia/Sydney" },
+      { name: "Argentina",     city: "Buenos Aires",       tz: "America/Argentina/Buenos_Aires" },
+      { name: "México",        city: "Cidade do México",   tz: "America/Mexico_City" },
+      { name: "Rússia",        city: "Moscou",             tz: "Europe/Moscow" },
+      { name: "Emirados",      city: "Dubai",              tz: "Asia/Dubai" },
+      { name: "África do Sul", city: "Joanesburgo",        tz: "Africa/Johannesburg" },
+    ];
 
-    const counterEl = document.getElementById('counter');
-    const recordEl = document.getElementById('record');
-    const historyEl = document.getElementById('history');
+    let selectedTz = "America/Sao_Paulo";
 
-    function getStep() {
-      return parseInt(document.getElementById('step').value) || 1;
+    function getOffset(tz) {
+      const now = new Date();
+      const tzDate = new Date(now.toLocaleString("en-US", { timeZone: tz }));
+      const utcDate = new Date(now.toLocaleString("en-US", { timeZone: "UTC" }));
+      const diff = Math.round((tzDate - utcDate) / 3600000);
+      return (diff >= 0 ? "UTC+" : "UTC") + diff;
     }
 
-    function updateColor() {
-      counterEl.classList.remove('positive', 'negative', 'zero');
-      if (count > 0) counterEl.classList.add('positive');
-      else if (count < 0) counterEl.classList.add('negative');
-      else counterEl.classList.add('zero');
-    }
+    const grid = document.getElementById("tz-grid");
 
-    function bump() {
-      counterEl.classList.add('bump');
-      setTimeout(() => counterEl.classList.remove('bump'), 120);
-    }
-
-    function addHistory(op, value, result) {
-      const div = document.createElement('div');
-      div.className = 'history-item';
-      const time = new Date().toLocaleTimeString('pt-BR');
-      const opClass = op === '+' ? 'op-plus' : op === '-' ? 'op-minus' : 'op-reset';
-      div.innerHTML = `<span class="${opClass}">${op} ${value}</span><span>→ ${result} &nbsp; <small>${time}</small></span>`;
-      historyEl.prepend(div);
-    }
-
-    function change(direction) {
-      const step = getStep();
-      count += direction * step;
-      if (count > record) { record = count; recordEl.textContent = record; }
-      counterEl.textContent = count;
-      updateColor();
-      bump();
-      addHistory(direction > 0 ? '+' : '-', step, count);
-    }
-
-    function reset() {
-      addHistory('↺', count, 0);
-      count = 0;
-      counterEl.textContent = 0;
-      updateColor();
-      bump();
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowUp' || e.key === '+') change(1);
-      if (e.key === 'ArrowDown' || e.key === '-') change(-1);
-      if (e.key === 'r' || e.key === 'R') reset();
+    zones.forEach(z => {
+      const btn = document.createElement("button");
+      btn.className = "tz-btn" + (z.tz === selectedTz ? " active" : "");
+      btn.innerHTML = `<div class="tz-name">${z.name}</div><div class="tz-city">${z.city} &bull; ${getOffset(z.tz)}</div>`;
+      btn.addEventListener("click", () => {
+        selectedTz = z.tz;
+        document.querySelectorAll(".tz-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("sel-label").textContent =
+          `${z.city} — ${z.name} (${getOffset(z.tz)})`;
+      });
+      grid.appendChild(btn);
     });
+
+    function padZ(n) { return String(n).padStart(2, "0"); }
+
+    const weekdays = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+    const months   = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+
+    function getNow() {
+      return new Date(new Date().toLocaleString("en-US", { timeZone: selectedTz }));
+    }
+
+    const canvas = document.getElementById("analog");
+    const ctx = canvas.getContext("2d");
+
+    function drawAnalog(h, m, s) {
+      const W = canvas.width, H = canvas.height;
+      const cx = W / 2, cy = H / 2, r = W / 2 - 10;
+      ctx.clearRect(0, 0, W, H);
+
+      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const face     = dark ? "#1e1e1c" : "#ffffff";
+      const ringCol  = dark ? "#333"    : "#ddd";
+      const numCol   = dark ? "#777"    : "#999";
+      const handCol  = dark ? "#e0e0de" : "#1a1a1a";
+      const secCol   = "#178dd4";
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = face;
+      ctx.fill();
+      ctx.strokeStyle = ringCol;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      for (let i = 1; i <= 12; i++) {
+        const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+        ctx.fillStyle = numCol;
+        ctx.font = "10px system-ui, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(i, cx + Math.cos(a) * (r - 18), cy + Math.sin(a) * (r - 18));
+      }
+
+      for (let i = 0; i < 60; i++) {
+        const a = (i / 60) * Math.PI * 2 - Math.PI / 2;
+        const isHour = i % 5 === 0;
+        const outer = r - 4;
+        const inner = outer - (isHour ? 9 : 4);
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer);
+        ctx.lineTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner);
+        ctx.strokeStyle = ringCol;
+        ctx.lineWidth = isHour ? 2 : 1;
+        ctx.stroke();
+      }
+
+      function hand(angle, length, width, color) {
+        const a = angle - Math.PI / 2;
+        ctx.beginPath();
+        ctx.moveTo(cx - Math.cos(a) * length * 0.18, cy - Math.sin(a) * length * 0.18);
+        ctx.lineTo(cx + Math.cos(a) * length, cy + Math.sin(a) * length);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+        ctx.stroke();
+      }
+
+      const hAngle = ((h % 12) / 12 + m / 720) * Math.PI * 2;
+      const mAngle = (m / 60 + s / 3600) * Math.PI * 2;
+      const sAngle = (s / 60) * Math.PI * 2;
+
+      hand(hAngle, r * 0.50, 4.5, handCol);
+      hand(mAngle, r * 0.72, 2.5, handCol);
+      hand(sAngle, r * 0.80, 1.5, secCol);
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = secCol;
+      ctx.fill();
+    }
+
+    function tick() {
+      const d = getNow();
+      const h = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+      document.getElementById("dig-time").textContent = `${padZ(h)}:${padZ(m)}:${padZ(s)}`;
+      document.getElementById("dig-date").textContent =
+        `${weekdays[d.getDay()]}, ${d.getDate()} de ${months[d.getMonth()]} de ${d.getFullYear()}`;
+      drawAnalog(h, m, s);
+    }
+
+    tick();
+    setInterval(tick, 1000);

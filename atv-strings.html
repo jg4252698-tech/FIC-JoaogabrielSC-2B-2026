@@ -8,20 +8,37 @@
 </head>
 <body>
 
-    <h1>Cadastro</h1>
-
-    <input type="text" placeholder="Nome" id="nome">
-    <input type="text" placeholder="Idade" id="idade">
-
-    <button onclick="adicionar()">Adicionar</button>
-    <button onclick="analisar()">Calcular média</button>
+    <h1 class="titulo-cadastro">Cadastro</h1>
     
-    <h2>Lista de pessoas</h2>
+    <div class="infos">
+
+        <input type="text" placeholder="Nome" id="nome">
+        <input type="text" placeholder="Idade" id="idade">
+
+    </div>
+
+    <div class="botoes">
+
+        <button onclick="adicionar()" id="adicionar">Adicionar</button>
+        <button onclick="analisar()" id="media">Calcular média</button>
+
+    </div>
+
+    <h2 class="titulo-cadastro">Lista de pessoas</h2>
 
     <ul id="lista"></ul>
 
     <h3 id="resultado"></h3>
-    
+
+    <button onclick="history.back()">Voltar</button>
+
+
+    <footer class="rodape">
+        <h4 class="titulo-rodape">Sobre</h4>
+        <p>João Gabriel • Desenvolvedor em formação</p>
+        <p>© 2026 João Gabriel. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="java.js"></script>
 
 </body>

@@ -8,23 +8,29 @@
 </head>
 <body>
 
-    <h1>Boca de urna</h1>
-
-    <h2>Credenciamento</h2>
-
-    <input type="text" id="nome" placeholder="Seu nome">
-    <input type="number" id="idade" placeholder="Sua idade">
-
-    <button onclick="verificar()">Verificar</button>
-
-    <div id="urna" style="display: none;">
-        
-    <h2>Urna eletrônica</h2>
-
-    <input type="number" id="voto" placeholder="Digite seu voto aqui">
-
-    <button onclick="confirmar()">Confirmar</button>
+    <div class="secao-cred">
+        <h1>Boca de urna</h1>
+        <h2>Credenciamento</h2>
+        <input type="text" id="nome" placeholder="Seu nome">
+        <input type="number" id="idade" placeholder="Sua idade">
     </div>
+
+    <div class="secao-urna">
+        <button onclick="verificar()">Verificar</button>
+
+        <div id="urna" style="display: none;">
+            <h2>Urna eletrônica</h2>
+            <input type="number" id="voto" placeholder="Digite seu voto aqui">
+            <button onclick="confirmar()">Confirmar</button>
+        </div>
+    </div>
+    <button onclick="history.back()">Voltar</button>
+
+    <footer class="rodape">
+        <h4 class="titulo-rodape">Sobre</h4>
+        <p>João Gabriel • Desenvolvedor em formação</p>
+        <p>© 2026 João Gabriel. Todos os direitos reservados.</p>
+    </footer>
     
     <script src="java.js"></script>
     
